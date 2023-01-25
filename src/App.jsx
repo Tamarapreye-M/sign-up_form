@@ -3,6 +3,12 @@ import "./App.css";
 import Input from "./components/Input";
 
 const App = () => {
+	const inputArr = [
+		{ name: "firstName", label: "First Name" },
+		{ name: "lastName" },
+		{ name: "email" },
+		{ name: "password" },
+	];
 	return (
 		<div>
 			<h4>sign up</h4>
