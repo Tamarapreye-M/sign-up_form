@@ -1,0 +1,25 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	height: 100vh;
+}
+
+.main-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70vh;
+}
+.card {
+	text-align: center;
+}
+form {
+	text-align: left;
+	margin-block: 2rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 70px;
+}
