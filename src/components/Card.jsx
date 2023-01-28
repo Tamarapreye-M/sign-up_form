@@ -38,6 +38,9 @@ const Card = () => {
 		});
 		console.log(form);
 	};
+	// const handleErrorState = (ev) => {
+
+	// }
 
 	const allInput = inputArr.map((each, idx) => (
 		<Input
