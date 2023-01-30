@@ -19,6 +19,7 @@ const Input = ({
 				name={name}
 				// className={showError && "error-state"}
 				onChange={handleFormState}
+				// onChange={() => handleEach(id)}
 			/>
 			{/* {showError && <p className="error-state">Enter valid input</p>} */}
 		</div>
