@@ -45,7 +45,6 @@ const Card = () => {
 	const allInput = inputArr.map((each, idx) => (
 		<Input
 			key={idx}
-			id={idx + 1}
 			{...each}
 			form={form}
 			setForm={setForm}
