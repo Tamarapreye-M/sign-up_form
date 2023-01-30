@@ -42,7 +42,7 @@ const Card = () => {
 		// return handleFormInput();
 	};
 
-	const handleFormState = (ev) => {
+	const handleFormState = (ev, id) => {
 		let { value, name } = ev.target;
 
 		setForm((prev) => {
