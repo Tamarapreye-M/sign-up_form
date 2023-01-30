@@ -2,10 +2,25 @@ import React, { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 const inputArr = [
-	{ name: "firstName", label: "First Name", type: "text" },
-	{ name: "lastName", label: "Last Name", type: "text" },
-	{ name: "email", label: "Email", type: "text" },
-	{ name: "password", label: "Password", type: "password" },
+	{
+		name: "firstName",
+		label: "First Name",
+		type: "text",
+		id: ~~(Math.random() * 1000),
+	},
+	{
+		name: "lastName",
+		label: "Last Name",
+		type: "text",
+		id: ~~(Math.random() * 1000),
+	},
+	{ name: "email", label: "Email", type: "text", id: ~~(Math.random() * 1000) },
+	{
+		name: "password",
+		label: "Password",
+		type: "password",
+		id: ~~(Math.random() * 1000),
+	},
 ];
 
 const Card = () => {
