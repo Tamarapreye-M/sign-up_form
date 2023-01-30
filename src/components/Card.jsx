@@ -65,7 +65,6 @@ const Card = () => {
 			setForm={setForm}
 			handleFormState={handleFormState}
 			// handleEach={handleEach}
-			onChange={() => handleEach(id)}
 		/>
 	));
 
