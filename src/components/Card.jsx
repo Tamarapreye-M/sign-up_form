@@ -53,7 +53,7 @@ const Card = () => {
 		});
 		console.log(form);
 		if (value.length < 1 && id === id) {
-			setForm;
+			// set the form to toggle the status
 		}
 	};
 	// const handleErrorState = (ev) => {
