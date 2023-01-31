@@ -52,6 +52,9 @@ const Card = () => {
 			};
 		});
 		console.log(form);
+		if (value.length < 1 && id === id) {
+			setForm;
+		}
 	};
 	// const handleErrorState = (ev) => {
 
