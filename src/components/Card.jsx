@@ -7,60 +7,89 @@ const inputArr = [
 		label: "First Name",
 		type: "text",
 		id: ~~(Math.random() * 1000),
+		maxLength: "30",
 	},
 	{
 		name: "lastName",
 		label: "Last Name",
 		type: "text",
 		id: ~~(Math.random() * 1000),
+		maxLength: "30",
 	},
-	{ name: "email", label: "Email", type: "text", id: ~~(Math.random() * 1000) },
+	{
+		name: "email",
+		label: "Email",
+		type: "text",
+		id: ~~(Math.random() * 1000),
+		maxLength: "30",
+	},
 	{
 		name: "password",
 		label: "Password",
 		type: "password",
 		id: ~~(Math.random() * 1000),
+		maxLength: "12",
 	},
 ];
 
 const Card = () => {
 	const [form, setForm] = useState({
-		firstName: { value: "", errorState: false },
-		lastName: { value: "", errorState: false },
-		email: { value: "", errorState: false },
-		password: { value: "", errorState: false },
+		firstName: { value: "", errorState: false, status: false },
+		lastName: { value: "", errorState: false, status: false },
+		email: { value: "", errorState: false, status: false },
+		password: { value: "", errorState: false, status: false },
 	});
 
 	const { firstName, lastName, email, password } = form;
 
 	const handleFormState = (ev) => {
-		let { value, name, focus } = ev.target;
+		let { value, name, maxLength } = ev.target;
 
-		setForm((prev) => {
-			return {
-				...prev,
-				[name]: { ...[name], value: value },
-			};
-		});
-		if (focus && value.length < 2) {
-			// set the form to toggle the status
-			setForm((prev) => {
-				return {
-					...prev,
-					[name]: { ...[name], errorState: true, value: value },
-				};
-			});
-			console.log("error");
-		} else {
-			setForm((prev) => {
-				return {
-					...prev,
-					[name]: { ...[name], errorState: false, value: value },
-				};
-			});
+		// set the form to toggle the status
+		let newPrev = {
+			value: value,
+			errorState: true,
+			status: value.length >= +maxLength ? true : false,
+		};
+
+		switch (true) {
+			case name === "firstName" && value.trim().length < 2:
+			case name === "lastName" && value.trim().length < 2:
+				setForm((prev) => {
+					return {
+						...prev,
+						[name]: newPrev,
+					};
+				});
+				break;
+			case name === "email" &&
+				!/^[a-z]{1,}\w*@([ge]?mail|yahoo)\.com$/gi.test(value):
+				setForm((prev) => {
+					return {
+						...prev,
+						[name]: newPrev,
+					};
+				});
+				break;
+			case name === "password" && !/^\S{6,12}$/gi.test(value):
+				setForm((prev) => {
+					return {
+						...prev,
+						[name]: newPrev,
+					};
+				});
+				break;
+			default:
+				setForm((prev) => {
+					return {
+						...prev,
+						[name]: { ...newPrev, errorState: false },
+					};
+				});
+				break;
 		}
-		console.log(form);
 	};
+	console.log(form);
 
 	const allInput = inputArr.map((each, idx) => (
 		<div className="form-div" key={idx}>
@@ -72,9 +101,14 @@ const Card = () => {
 				setForm={setForm}
 				handleFormState={handleFormState}
 				className={form[each.name].errorState ? "error-state" : "success"}
+				maxLength={each.maxLength}
 			/>
-			{form[each.name].errorState && (
-				<p className="error-state">Enter valid {each.label.toLowerCase()}</p>
+			{form[each.name].errorState ? (
+				<p className="error-state">{`Enter valid ${each.label.toLowerCase()}`}</p>
+			) : (
+				<p className="error-state">
+					{form[each.name].status && `maximum characters reached`}
+				</p>
 			)}
 		</div>
 	));
