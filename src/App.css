@@ -25,6 +25,7 @@ form {
 }
 form input {
 	width: 100%;
+	outline: none;
 }
 .error-state {
 	color: red;
