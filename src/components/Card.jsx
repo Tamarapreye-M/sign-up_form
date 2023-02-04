@@ -25,25 +25,16 @@ const inputArr = [
 
 const Card = () => {
 	const [form, setForm] = useState({
-		firstName: { value: "", status: false, error: false },
-		lastName: { value: "", status: false, error: false },
-		email: { value: "", status: false, error: false },
-		password: { value: "", status: false, error: false },
+		firstName: { value: "", status: false, errorState: false },
+		lastName: { value: "", status: false, errorState: false },
+		email: { value: "", status: false, errorState: false },
+		password: { value: "", status: false, errorState: false },
 	});
 
 	const { firstName, lastName, email, password } = form;
-
-	const handleEach = (id) => {
-		// const handleFormInput = (ev) => {
-		// 	console.log(ev.target.value);
-		// 	let { value } = ev.target;
-		// 	id && value.length === 1 ? setShowError(true) : setShowError(false);
-		// };
-		// return handleFormInput();
-	};
-
-	const handleFormState = (ev, id) => {
-		let { value, name } = ev.target;
+	const [showError, setShowError] = useState(false);
+	const handleFormState = (ev) => {
+		let { value, name, focus } = ev.target;
 
 		setForm((prev) => {
 			return {
@@ -51,24 +42,52 @@ const Card = () => {
 				[name]: { ...[name], value: value },
 			};
 		});
-		console.log(form);
-		if (value.length < 1 && id === id) {
+		// console.log(form);
+		if (focus && value.length < 2) {
 			// set the form to toggle the status
+			setForm((prev) => {
+				return {
+					...prev,
+					[name]: { ...[name], errorState: true },
+				};
+			});
+			console.log("error");
+
+			// ev.target.className = "error-state";
+			// ev.target.style.borderColor = "red";
+			// console.log(ev.target.style);
+		} else {
+			// ev.target.style.borderColor = "blue";
+			// ev.target.className = null;
+			setForm((prev) => {
+				return {
+					...prev,
+					[name]: { ...[name], errorState: false },
+				};
+			});
 		}
+		console.log(form);
 	};
 	// const handleErrorState = (ev) => {
 
 	// }
 
 	const allInput = inputArr.map((each, idx) => (
-		<Input
-			key={idx}
-			{...each}
-			form={form}
-			setForm={setForm}
-			handleFormState={handleFormState}
-			// handleEach={handleEach}
-		/>
+		<div className="form-div">
+			<label htmlFor="">{each.label}</label>
+			<br />
+			<Input
+				key={idx}
+				{...each}
+				form={form}
+				setForm={setForm}
+				handleFormState={handleFormState}
+				formStates={form}
+			/>
+			{form[each.name].errorState && (
+				<p className="error-state">Enter valid input</p>
+			)}
+		</div>
 	));
 
 	return (
