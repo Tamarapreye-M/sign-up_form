@@ -1,12 +1,12 @@
 import React from "react";
 
 const Input = (props) => {
-	let { name, type, handleFormState } = props;
+	let { name, type, handleFormState, className } = props;
 	return (
 		<input
 			type={type}
 			name={name}
-			className={showError && "error-state"}
+			className={className}
 			onChange={handleFormState}
 		/>
 	);
