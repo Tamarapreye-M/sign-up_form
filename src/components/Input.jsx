@@ -1,7 +1,7 @@
 import React from "react";
 
 const Input = (props) => {
-	let { name, label, type, showError, handleFormState, formStates } = props;
+	let { name, type, handleFormState } = props;
 	return (
 		<input
 			type={type}
