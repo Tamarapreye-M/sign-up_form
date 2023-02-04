@@ -1,28 +1,14 @@
 import React from "react";
 
-const Input = ({
-	name,
-	label,
-	type,
-	handleEach,
-	showError,
-	id,
-	handleFormState,
-}) => {
-	console.log(id);
+const Input = (props) => {
+	let { name, label, type, showError, handleFormState, formStates } = props;
 	return (
-		<div className="form-div">
-			<label htmlFor="firstName">{label}</label>
-			<br />
-			<input
-				type={type}
-				name={name}
-				// className={showError && "error-state"}
-				onChange={handleFormState}
-				// onChange={() => handleEach(id)}
-			/>
-			{/* {showError && <p className="error-state">Enter valid input</p>} */}
-		</div>
+		<input
+			type={type}
+			name={name}
+			className={showError && "error-state"}
+			onChange={handleFormState}
+		/>
 	);
 };
 
