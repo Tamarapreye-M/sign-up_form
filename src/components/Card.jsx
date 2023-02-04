@@ -74,7 +74,7 @@ const Card = () => {
 
 	const allInput = inputArr.map((each, idx) => (
 		<div className="form-div">
-			<label htmlFor="">{each.label}</label>
+			<label htmlFor={each.name}>{each.label}</label>
 			<br />
 			<Input
 				key={idx}
