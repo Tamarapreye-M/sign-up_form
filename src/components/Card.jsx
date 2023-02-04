@@ -25,10 +25,10 @@ const inputArr = [
 
 const Card = () => {
 	const [form, setForm] = useState({
-		firstName: { value: "", status: false, errorState: false },
-		lastName: { value: "", status: false, errorState: false },
-		email: { value: "", status: false, errorState: false },
-		password: { value: "", status: false, errorState: false },
+		firstName: { value: "", errorState: false },
+		lastName: { value: "", errorState: false },
+		email: { value: "", errorState: false },
+		password: { value: "", errorState: false },
 	});
 
 	const { firstName, lastName, email, password } = form;
@@ -42,13 +42,12 @@ const Card = () => {
 				[name]: { ...[name], value: value },
 			};
 		});
-		// console.log(form);
 		if (focus && value.length < 2) {
 			// set the form to toggle the status
 			setForm((prev) => {
 				return {
 					...prev,
-					[name]: { ...[name], errorState: true },
+					[name]: { ...[name], errorState: true, value: value },
 				};
 			});
 			console.log("error");
@@ -62,7 +61,7 @@ const Card = () => {
 			setForm((prev) => {
 				return {
 					...prev,
-					[name]: { ...[name], errorState: false },
+					[name]: { ...[name], errorState: false, value: value },
 				};
 			});
 		}
