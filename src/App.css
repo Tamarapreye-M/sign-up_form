@@ -32,3 +32,11 @@ form input {
 	color: red;
 	border-color: red;
 }
+/* this is to ensure maximum characters text doesnt show unless input is in focus */
+.bar {
+	display: none;
+}
+
+input:focus + .bar {
+	display: block;
+}
