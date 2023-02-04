@@ -32,7 +32,7 @@ const Card = () => {
 	});
 
 	const { firstName, lastName, email, password } = form;
-	const [showError, setShowError] = useState(false);
+
 	const handleFormState = (ev) => {
 		let { value, name, focus } = ev.target;
 
@@ -51,13 +51,7 @@ const Card = () => {
 				};
 			});
 			console.log("error");
-
-			// ev.target.className = "error-state";
-			// ev.target.style.borderColor = "red";
-			// console.log(ev.target.style);
 		} else {
-			// ev.target.style.borderColor = "blue";
-			// ev.target.className = null;
 			setForm((prev) => {
 				return {
 					...prev,
@@ -67,24 +61,20 @@ const Card = () => {
 		}
 		console.log(form);
 	};
-	// const handleErrorState = (ev) => {
-
-	// }
 
 	const allInput = inputArr.map((each, idx) => (
-		<div className="form-div">
+		<div className="form-div" key={idx}>
 			<label htmlFor={each.name}>{each.label}</label>
 			<br />
 			<Input
-				key={idx}
 				{...each}
 				form={form}
 				setForm={setForm}
 				handleFormState={handleFormState}
-				formStates={form}
+				className={form[each.name].errorState ? "error-state" : "success"}
 			/>
 			{form[each.name].errorState && (
-				<p className="error-state">Enter valid input</p>
+				<p className="error-state">Enter valid {each.label.toLowerCase()}</p>
 			)}
 		</div>
 	));
