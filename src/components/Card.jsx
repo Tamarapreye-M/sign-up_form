@@ -51,7 +51,7 @@ const Card = () => {
 			errorState: true,
 			status: value.length >= +maxLength ? true : false,
 		};
-
+		// conditions for form inputs validation
 		switch (true) {
 			case name === "firstName" && value.trim().length < 2:
 			case name === "lastName" && value.trim().length < 2:
