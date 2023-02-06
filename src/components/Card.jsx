@@ -79,6 +79,7 @@ const Card = () => {
 					};
 				});
 				break;
+			// deafault for all
 			default:
 				setForm((prev) => {
 					return {
