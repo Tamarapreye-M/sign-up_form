@@ -43,7 +43,7 @@ const Card = () => {
 	const { firstName, lastName, email, password } = form;
 
 	const handleFormState = (ev) => {
-		let { value, name, maxLength } = ev.target;
+		let { value, name, maxLength, focus } = ev.target;
 
 		// set the form to toggle the status
 		let newPrev = {
@@ -106,7 +106,7 @@ const Card = () => {
 			{form[each.name].errorState ? (
 				<p className="error-state">{`Enter valid ${each.label.toLowerCase()}`}</p>
 			) : (
-				<p className="error-state">
+				<p className="error-state bar">
 					{form[each.name].status && `maximum characters reached`}
 				</p>
 			)}
