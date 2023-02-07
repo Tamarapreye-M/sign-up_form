@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Input = (props) => {
 	const { name, type, handleFormState, className, maxLength } = props;
 
-	const [showPassword, setShowPassword] = useState(false);
 	const passwordIcon = (
-		<span class="material-symbols-outlined">visibility</span>
+		<span className="material-symbols-outlined">visibility</span>
 	);
 
 	return (
