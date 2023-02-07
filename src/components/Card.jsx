@@ -79,7 +79,7 @@ const Card = () => {
 					};
 				});
 				break;
-			// deafault for all
+			// deafault for all inputs
 			default:
 				setForm((prev) => {
 					return {
@@ -113,6 +113,7 @@ const Card = () => {
 			)}
 		</div>
 	));
+	let disabledBtn = Object.values(form).some((each) => each.errorState);
 
 	return (
 		<div className="card">
@@ -121,7 +122,7 @@ const Card = () => {
 			<p>Welcome to Onigs Where magic happens</p>
 			<form className="form-container">
 				{allInput}
-				<Button content="sign in" />
+				<Button content="sign in" disabled={disabledBtn} />
 			</form>
 			<p>
 				{firstName.value}, {lastName.value}, {email.value}, {password.value}
