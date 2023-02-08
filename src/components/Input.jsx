@@ -1,14 +1,28 @@
 import React from "react";
 
 const Input = (props) => {
-	const { name, type, handleFormState, className, maxLength } = props;
+	const {
+		name,
+		type,
+		handleFormState,
+		className,
+		maxLength,
+		showPassword,
+		handleShowPassword,
+	} = props;
 
-	const passwordIcon = (
-		<span className="material-symbols-outlined">visibility</span>
+	const passwordIcon = showPassword ? (
+		<span className="material-symbols-outlined" onClick={handleShowPassword}>
+			visibility
+		</span>
+	) : (
+		<span className="material-symbols-outlined" onClick={handleShowPassword}>
+			visibility_off
+		</span>
 	);
 
 	return (
-		<div>
+		<>
 			<input
 				type={type}
 				name={name}
@@ -16,8 +30,8 @@ const Input = (props) => {
 				onChange={handleFormState}
 				maxLength={maxLength}
 			/>
-			{type === "password" && passwordIcon}
-		</div>
+			{name === "password" && passwordIcon}
+		</>
 	);
 };
 

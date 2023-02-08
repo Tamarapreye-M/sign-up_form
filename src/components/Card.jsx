@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Form from "./Form";
 
 const Card = () => {
-	// states
 	// form state
 	const [form, setForm] = useState({
 		firstName: { value: "", errorState: false, status: false },
@@ -10,14 +9,15 @@ const Card = () => {
 		email: { value: "", errorState: false, status: false },
 		password: { value: "", errorState: false, status: false },
 	});
-	// show password state
-	const [showPassword, setShowPassword] = useState(false);
 
 	// destructuring the form
 	const { firstName, lastName, email, password } = form;
 
+	// event handlers
+
+	// handle the form state and handle form validation
 	const handleFormState = (ev) => {
-		let { value, name, maxLength, focus } = ev.target;
+		const { value, name, maxLength, focus } = ev.target;
 
 		// set the form to toggle the status
 		let newPrev = {
@@ -66,6 +66,14 @@ const Card = () => {
 	};
 	console.log(form);
 
+	// show password state
+	const [showPassword, setShowPassword] = useState(true);
+
+	// handle show or hide password
+	const handleShowPassword = () => {
+		setShowPassword(!showPassword);
+	};
+
 	return (
 		<div className="card">
 			<h4>sign up</h4>
@@ -76,10 +84,11 @@ const Card = () => {
 				form={form}
 				showPassword={showPassword}
 				setShowPassword={setShowPassword}
+				handleShowPassword={handleShowPassword}
 			/>
-			<p>
+			{/* <p>
 				{firstName.value}, {lastName.value}, {email.value}, {password.value}
-			</p>
+			</p> */}
 		</div>
 	);
 };
