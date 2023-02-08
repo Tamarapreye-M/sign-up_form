@@ -71,8 +71,10 @@ const Form = (props) => {
 	return (
 		<form action="" className="form-container">
 			{allInput}
-			<input type="checkbox" name="" id="" />
-
+			<div className="check">
+				<input type="checkbox" name="" id="" />
+				<label htmlFor="forgot password">Forgot password</label>
+			</div>
 			<Button content="sign in" disabled={disabledBtn} />
 		</form>
 	);
