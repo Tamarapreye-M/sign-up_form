@@ -6,11 +6,15 @@
 body {
 	height: 100vh;
 }
-
-.main-container {
+#root {
+	background-color: pink;
+	min-height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.main-container {
 	height: 70vh;
 }
 .card {
@@ -24,26 +28,48 @@ form {
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(4, 70px);
 }
+
 form input {
 	width: 100%;
 	outline: none;
+	padding: 0.5rem 0 0.5rem 0.5rem;
+	border: none;
+	border-radius: 5px;
 }
 .error-state {
 	color: red;
 	border-color: red;
 }
 /* this is to ensure maximum characters text doesnt show unless input is in focus */
-.bar {
-	display: none;
-}
-
 input:focus + .bar {
 	display: block;
 }
-
-.disabled {
-	background: red;
+.bar {
+	display: none;
+}
+button {
+	color: #fff;
+	padding: 0.5rem 0rem;
+	border: none;
+	border-radius: 5px;
+	background: blue;
 }
 .able {
-	background: blue;
+	color: #fff;
+	padding: 0.5rem 0rem;
+	border: none;
+	border-radius: 5px;
+}
+.disabled {
+	opacity: 0.6;
+}
+.input-div {
+	position: relative;
+}
+.material-symbols-outlined {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	right: 5%;
+	transform: translate(-5%, -50%);
 }
